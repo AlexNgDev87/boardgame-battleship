@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Battleship.Services
 {
-    public class PanelService
+    public class BoardService
     {
         public List<Panel> _Panels { get; private set; }
 
-        public PanelService(List<Panel> panels)
+        public BoardService(List<Panel> panels)
         {
             this._Panels = panels;
         }

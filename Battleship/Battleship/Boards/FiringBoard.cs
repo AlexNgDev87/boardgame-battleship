@@ -15,7 +15,7 @@ namespace Battleship.Boards
         public List<Coordinate> GetOpenRandomPanels()
         {
             var coordinates = new List<Coordinate>();
-            var panelService = new PanelService(base.Panels);
+            var panelService = new BoardService(base.Panels);
 
             coordinates.AddRange(panelService.GetCoordinationsOfOpenPanels());
             return coordinates;
@@ -25,7 +25,7 @@ namespace Battleship.Boards
         {
             List<Coordinate> coordinates = new List<Coordinate>();
 
-            var panelService = new PanelService(base.Panels);
+            var panelService = new BoardService(base.Panels);
             coordinates.AddRange(panelService.GetEmptyNeighboursOfLastHit());
 
             // return the coordinate of the empty panel

@@ -57,33 +57,23 @@ namespace Battleship.Models
 
         public ShotResult ProcessShot(Coordinate coord)
         {
-            //Locate the targeted panel on the GameBoard
             var panel = GameBoard.Panels.At(coord.Row, coord.Column);
 
-            //If the panel is NOT occupied by a ship
             if (!panel.IsOccupied)
             {
-                //Call out a miss
                 Console.WriteLine($"{this.Name} says: \"Miss!\"");
                 return ShotResult.Miss;
             }
 
-            //If the panel IS occupied by a ship, determine which one.
             var ship = Ships.First(x => x.PlacementType == panel.PlacementType);
 
-            //Increment the hit counter
             ship.Hits++;
 
-            //Call out a hit
             Console.WriteLine($"{this.Name} says: \"Hit!\"");
-
-            //If the ship is now sunk, call out which ship was sunk
+            
             if (ship.IsSunk)
-            {
                 Console.WriteLine($"{this.Name} says: \"You sunk my {ship.Name}!\"");
-            }
 
-            //For either a hit or a sunk, return a Hit status
             return ShotResult.Hit;
         }
 
@@ -136,23 +126,20 @@ namespace Battleship.Models
                 {
                     var startcolumn = rand.Next(1, 11);
                     var startrow = rand.Next(1, 11);
-                    int endrow = startrow, endcolumn = startcolumn;
+                    int endrow = startrow;
+                    int endcolumn = startcolumn;
                     var orientation = rand.Next(1, 101) % 2; //0 for Horizontal
 
                     List<int> panelNumbers = new List<int>();
                     if (orientation == 0)
                     {
                         for (int i = 1; i < ship.Space; i++)
-                        {
                             endrow++;
-                        }
                     }
                     else
                     {
                         for (int i = 1; i < ship.Space; i++)
-                        {
                             endcolumn++;
-                        }
                     }
 
                     if (endrow > 10 || endcolumn > 10)
