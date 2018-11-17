@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Battleship.Domain.Utilities;
 
 namespace Battleship.Domain.Models
 {
@@ -19,7 +20,7 @@ namespace Battleship.Domain.Models
         public string Status
         {
             get {
-                return Extensions.GetDescription<PlacementType>(this.PlacementType);
+                return EnumExtensions.GetDescription<PlacementType>(this.PlacementType);
             }
         }
 

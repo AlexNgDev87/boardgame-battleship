@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship", "Battleship\Battleship.csproj", "{2C7A2082-C10B-4F92-B7CA-B43BDE24B6E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship", "Battleship\Battleship.csproj", "{2C7A2082-C10B-4F92-B7CA-B43BDE24B6E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Domain", "Battleship.Domain\Battleship.Domain.csproj", "{A230D014-918A-43E6-A8BA-8A65F22C25A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battleship.Domain", "Battleship.Domain\Battleship.Domain.csproj", "{A230D014-918A-43E6-A8BA-8A65F22C25A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Services", "Battleship.Services\Battleship.Services.csproj", "{BB7A43B1-BFD0-4689-B57A-491E1828CA3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A230D014-918A-43E6-A8BA-8A65F22C25A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A230D014-918A-43E6-A8BA-8A65F22C25A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A230D014-918A-43E6-A8BA-8A65F22C25A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB7A43B1-BFD0-4689-B57A-491E1828CA3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7A43B1-BFD0-4689-B57A-491E1828CA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7A43B1-BFD0-4689-B57A-491E1828CA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7A43B1-BFD0-4689-B57A-491E1828CA3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

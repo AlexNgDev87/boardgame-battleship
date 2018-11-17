@@ -5,9 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace Battleship.Domain
+namespace Battleship.Domain.Utilities
 {
-    public static class Extensions
+    public static class EnumExtensions
     {
         public static string GetDescription<T>(this T e) where T : IConvertible
         {
