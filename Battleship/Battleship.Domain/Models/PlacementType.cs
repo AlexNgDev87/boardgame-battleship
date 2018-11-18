@@ -17,7 +17,7 @@ namespace Battleship.Domain.Models
         Destroyer,
         [Description("S")]
         Submarine,
-        [Description("C")]
+        [Description("A")]
         Carrier,
         [Description("X")]
         Hit,

@@ -1,7 +1,9 @@
-﻿using Battleship.Boards;
-using Battleship.Domain.Abstract;
+﻿using Battleship.Domain.Abstract;
+using Battleship.Domain.Boards;
 using Battleship.Domain.Models;
 using Battleship.Domain.Utilities;
+using Battleship.Models;
+using Battleship.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,26 +57,12 @@ namespace Battleship.Models
             return coord;
         }
 
-        public ShotResult ProcessShot(Coordinate coord)
+        public ShotResult ProcessShot(string playerName, Coordinate coord)
         {
-            var panel = GameBoard.Panels.At(coord.Row, coord.Column);
+            var gameService = new GameService();
+            var result = gameService.ProcessShot(playerName, Ships, GameBoard, coord);
 
-            if (!panel.IsOccupied)
-            {
-                Console.WriteLine($"{this.Name} says: \"Miss!\"");
-                return ShotResult.Miss;
-            }
-
-            var ship = Ships.First(x => x.PlacementType == panel.PlacementType);
-
-            ship.Hits++;
-
-            Console.WriteLine($"{this.Name} says: \"Hit!\"");
-            
-            if (ship.IsSunk)
-                Console.WriteLine($"{this.Name} says: \"You sunk my {ship.Name}!\"");
-
-            return ShotResult.Hit;
+            return result;
         }
 
         public void ProcessShotResult(Coordinate coord, ShotResult result)
@@ -133,12 +121,12 @@ namespace Battleship.Models
                     List<int> panelNumbers = new List<int>();
                     if (orientation == 0)
                     {
-                        for (int i = 1; i < ship.Space; i++)
+                        for (int i = 1; i <= ship.Space; i++)
                             endrow++;
                     }
                     else
                     {
-                        for (int i = 1; i < ship.Space; i++)
+                        for (int i = 1; i <= ship.Space; i++)
                             endcolumn++;
                     }
 

@@ -1,6 +1,9 @@
-﻿using Battleship.Boards;
+﻿
+using Battleship.Domain.Boards;
 using Battleship.Domain.Models;
+using Battleship.Models;
 using System;
+using System.Linq;
 
 namespace Battleship
 {
@@ -8,9 +11,6 @@ namespace Battleship
     {
         static void Main(string[] args)
         {
-            int player1WinCount = 0; 
-            int player2WinCount = 0;
-
             Console.WriteLine("Welcome to Battleship Board Game simulation");
             Console.WriteLine("Please enter Player 1 name: ");
             var firstPlayerName = Console.ReadLine();
@@ -18,20 +18,36 @@ namespace Battleship
             Console.WriteLine("Please enter Player 2 name: ");
             var secondPlayerName = Console.ReadLine();
 
-            Game game1 = new Game(firstPlayerName, secondPlayerName);
-            game1.PlayToEnd();
+            Game game = new Game(firstPlayerName, secondPlayerName);
 
-            if (game1.Player1.HasLost)
+            int iteration = 1;
+            while (!game.IsEnd)
             {
-                player2WinCount++;
+                var answer = string.Empty;
+                var player = iteration % 2 == 1 ? PlayerSequence.Player1 : PlayerSequence.Player2;
+
+                if (player == PlayerSequence.Player1)
+                    Console.WriteLine($"{ firstPlayerName }, please enter your coordinates (row, column): ");
+                else
+                    Console.WriteLine($"{ secondPlayerName }, please enter your coordinates (row, column): ");
+
+                answer = Console.ReadLine();
+
+                var answers = answer.Split(',');
+                var coordinates = new Coordinate(
+                        int.Parse(answers[0].ToString()), 
+                        int.Parse(answers[1].ToString()));
+
+
+                game.PlayRound(player, coordinates);
+                iteration++;
             }
+
+            if (game.Player1.HasLost)
+                Console.WriteLine($"{secondPlayerName} Won!");
             else
-            {
-                player1WinCount++;
-            }
+                Console.WriteLine($"{firstPlayerName} Won!");
 
-            Console.WriteLine($"{firstPlayerName} Wins: {player1WinCount}");
-            Console.WriteLine($"{secondPlayerName} Wins: {player2WinCount}");
             Console.ReadLine();
         }
     }
